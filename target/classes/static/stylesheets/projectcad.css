@@ -1,0 +1,52 @@
+/* Tabela Simples */
+.pc-tabela-simples {
+	margin-top: 15px;
+}
+
+.pc-tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.pc-tabela-simples table tr td {
+    border-top: none;
+    border-bottom: 1px solid #e7eaec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/*
+###################
+# SISTEMA - TELAS
+###################
+*/
+
+/* Colunas comuns */
+.table-col-acoes {
+	width: 80px;
+}
+
+/* Colunas - Pesquisa de Cervejas */
+
+.table-projetos-col-codigo {
+	width: 90px;
+	text-align: center;
+}
+
+.table-projetos-col-status {
+	width: 150px;
+}
+
+.table-projetos-col-acoes {
+	width: 80px;
+}
+
+/*
+#############################
+#MANIPULANDO BOOTSTRAP
+#############################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+}

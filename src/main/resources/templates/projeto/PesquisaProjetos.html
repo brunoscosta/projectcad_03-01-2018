@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	  			xmlns:th="http://www.thymeleaf.org"
+	  			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  			layout:decorate="~{layout/LayoutPadrao}"
+	  			xmlns:projectcad="http://projectcad.eletroinfoaudio.com">
+	<head>
+		<title>Pesquisa de Projetos</title>
+	</head>
+	<body>
+		<section layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-10">
+							<h1>Pesquisa de Projetos</h1>
+						</div>
+						<div class="col-xs-2">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-default" th:href="@{/projetos/novo}">
+									<i class="glyphicon glyphicon-plus-sign"></i> <span class="hidden-xs hidden-sm">Novo Projeto</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<form method="GET" th:object="${projetoFilter}">
+					<div class="row">
+						<div class="form-group  col-sm-6">
+							<label class="control-label" for="codigo">Codigo</label>
+							<input type="text" class="form-control" id="codigo" autofocus="autofocus" th:field="*{codigo}"/>
+						</div>
+						
+						<div class="form-group  col-sm-6" >
+							<label class="control-label" for="nome">Nome</label>
+							<input type="text" class="form-control" id="nome" th:field="*{nome}"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group  col-sm-6">
+							<label class="control-label" for="dataInicio">Data de Inicio</label>
+							<div class="input-group">
+								<input type="date" class="form-control" id="dataInicio" autofocus="autofocus" th:field="*{dataInicio}"/>
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group  col-sm-6">
+							<label class="control-label" for="sabor">Data de Fim</label>
+							<div class="input-group"> 
+								<input type="date" class="form-control" id="dataFim" autofocus="autofocus" th:field="*{dataFim}"/>
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label" for="Status">Status</label> 
+							<select id="sabor" class="form-control" th:field="*{status}">
+		                    	<option value="">Todos os Status</option>
+		                    	<option th:each="status : ${status}" th:value="${status}" th:text="${status.descricao}"></option>
+		                	</select>
+						</div>
+					</div>
+					<button type="submit" class="btn  btn-primary">Pesquisar</button>
+				</form>
+				
+				<div class="table-responsive pc-tabela-simples">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th class="table-projetos-col-codigo">Codigo</th>
+								<th class="table-projetos-col-nome">Nome</th>
+								<th class="table-projetos-col-status">Status</th>
+								<th class="table-projetos-col-dataInicio">Data Inicio</th>
+								<th class="table-projetos-col-dataFim">Data Fim</th>
+								<th class="table-projetos-col-acoes"></th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr th:each="projeto : ${projetos}">
+								<td class="text-center" th:text="${projeto.codigo}"></td>
+								<td th:text="${projeto.nome}"></td>
+								<td th:text="${projeto.status.descricao}"></td>
+								<td th:text="${projeto.dataInicio}"></td>
+								<td th:text="${projeto.dataFim}"></td>
+								<td class="text-center">
+									<a class="btn  btn-link  btn-xs js-tooltip" title="Editar" 
+										th:href="@{/projetos/{codigo}(codigo=${projeto.codigo})}"> 
+										<i class="glyphicon glyphicon-pencil"></i>
+									</a>
+									<a class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn" title="Excluir" 
+										href="#" data:url="@{/projetos/{codigo}(codigo=${projeto.codigo})}" data:codigo="${projeto.codigo}" data:objeto="${projeto.nome}">
+										<i class="glyphicon glyphicon-remove"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		
+		
+		
+		</section>
+	</body>
+</html>

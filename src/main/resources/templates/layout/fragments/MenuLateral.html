@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:projectcad="http://projectcad.eletroinfoaudio.com">
+  	<body>
+		<aside class="aw-layout-sidebar  js-sidebar" th:fragment="sidebar">
+		  <div class="aw-layout-sidebar__content">
+   			<nav class="aw-menu  js-menu">
+      		<ul class="aw-menu__list">
+
+        		<li class="aw-menu__item">
+          			<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Inicio</span></a>
+        		</li>
+
+        		<li class="aw-menu__item">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-file"></i><span>Projetos</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+      
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" projectcad:menu="@{/}">
+			            	<a th:href="@{/projetos}">Pesquisa</a>
+			            </li>
+			            <li class="aw-menu__item  aw-menu__item--link" projectcad:menu="@{/projetos/novo}">
+			            	<a th:href="@{/projetos/novo}">Novo</a>
+			            </li>
+          			</ul>
+        		</li>
+
+        		<li class="aw-menu__item">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-users"></i><span>Usuarios</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" projectcad:menu="@{/usuarios}">
+			            	<a th:href="@{/usuarios}">Pesquisa</a>
+			            </li>
+			            <li class="aw-menu__item  aw-menu__item--link" projectcad:menu="@{/usuarios/novo}">
+			            	<a th:href="@{/usuarios/novo}">Novo</a>
+			            </li>
+          			</ul>
+        		</li>
+
+      		</ul>
+    	</nav>
+		  </div>
+		</aside>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+CREATE TABLE projeto (
+	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50) NOT NULL,
+	data_inicio DATETIME,
+	data_fim DATETIME,
+	status VARCHAR(20)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
